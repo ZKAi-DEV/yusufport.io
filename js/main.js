@@ -84,6 +84,7 @@
     videoModal.addEventListener('hide.bs.modal', function() {
         video.setAttribute('src', '');
     });
+});
 
 
     // Facts counter
