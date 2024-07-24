@@ -71,20 +71,17 @@
 
 
     // Modal Video
-    document.addEventListener('DOMContentLoaded', function() {
-    var videoModal = document.getElementById('videoModal');
-    var video = document.getElementById('video');
-
-    videoModal.addEventListener('show.bs.modal', function(event) {
-        var button = event.relatedTarget;
-        var videoSrc = button.getAttribute('data-src');
-        video.setAttribute('src', videoSrc + "?autoplay=1&modestbranding=1&showinfo=0");
+    var $videoSrc;
+    $('.btn-play').click(function () {
+        $videoSrc = $(this).data("src");
     });
-
-    videoModal.addEventListener('hide.bs.modal', function() {
-        video.setAttribute('src', '');
-    });
-});
+    console.log($videoSrc);
+    $('#videoModal').on('shown.bs.modal', function (e) {
+        $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+    })
+    $('#videoModal').on('hide.bs.modal', function (e) {
+        $("#video").attr('src', $videoSrc);
+    })
 
 
     // Facts counter
